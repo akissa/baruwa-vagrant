@@ -15,7 +15,7 @@ Currently the following providers are supported.
 Configuration is by use of environment variables. The following
 variable is required.
 
-* DIGITAL_OCEAN_CLIENT_TOKEN
+* DIGITAL_OCEAN_TOKEN
 
 The following variables are optional.
 
@@ -23,11 +23,18 @@ The following variables are optional.
 * DIGITAL_OCEAN_REGION - defaults to Frankfurt 1
 * DIGITAL_OCEAN_SIZE - defaults to 4GB
 
+## SSH Keys
+
+Generate an SSH key pair for use by the plugin.
+
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/digital_ocean_rsa
+
 ## Run
 
-After configuration you should run the following command to setup
-the VPS.
+After generating the ssh key pair, you should run the following
+command to setup the VPS.
 
+    export DIGITAL_OCEAN_TOKEN="your digital ocean token"
     vagrant up --provider=digital_ocean
 
 After the VPS has been setup you can login and proceed with
