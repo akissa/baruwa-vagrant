@@ -24,4 +24,8 @@ Vagrant.configure(2) do |config|
           provider.size = "4gb"
       end
   end
+  config.vm.provision "shell" do |s|
+      s.path = "provision.py"
+      s.args = [ENV["BARUWA_ACTIVATION_KEY"]]
+  end
 end
