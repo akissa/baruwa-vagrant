@@ -13,9 +13,10 @@ Currently the following providers are supported.
 ## Configuration
 
 Configuration is by use of environment variables. The following
-variable is required.
+variables are required.
 
 * DIGITAL_OCEAN_TOKEN
+* BARUWA_ACTIVATION_KEY
 
 The following variables are optional.
 
@@ -34,7 +35,7 @@ Generate an SSH key pair for use by the plugin.
 After generating the ssh key pair, you should run the following
 command to setup the VPS.
 
-    export DIGITAL_OCEAN_TOKEN="your digital ocean token"
+    export DIGITAL_OCEAN_TOKEN="digitalocean token" BARUWA_ACTIVATION_KEY="key"
     vagrant up --provider=digital_ocean
 
 After the VPS has been setup you can login and proceed with
@@ -44,3 +45,17 @@ configuration.
 
 After the VPS has been setup and converted you can now run baruwa-setup
 to complete configuration.
+
+## Contributing
+
+1. Fork it (https://github.com/akissa/baruwa-vagrant/fork)
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+
+## License
+
+All code is licensed under the
+[AGPLv3+ License](https://github.com/akissa/baruwa-vagrant/blob/master/LICENSE).
