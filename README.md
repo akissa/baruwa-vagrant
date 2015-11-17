@@ -28,6 +28,7 @@ the VPS.
 
     vagrant up --provider=digital_ocean
 
+
  ## Configuration
 
  After the VPS has been setup and converted you can now run baruwa-setup
