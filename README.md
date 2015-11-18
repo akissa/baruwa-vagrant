@@ -4,16 +4,32 @@ Sets up and converts a CentOS 6 VPS to Baruwa Enterprise Edition.
 Currently the following providers are supported.
 
 * DigitalOcean
+* Linode
 
 ## Requirements
 
-* Vagrant
-* Vagrant DigitalOcean provider
+* [Vagrant](https://www.vagrantup.com/)
+
+One of the following providers
+
+* [Vagrant DigitalOcean provider](https://github.com/smdahlen/vagrant-digitalocean)
+* [Vagrant Linode provider](https://github.com/displague/vagrant-linode)
+
+## Installation
+
+You need to install Vagrant and one of the provider plugins above.
+You should then clone this repo to your machine.
+
+    git clone https://github.com/akissa/baruwa-vagrant.git
+    cd baruwa-vagrant
 
 ## Configuration
 
-Configuration is by use of environment variables. The following
-variables are required.
+Configuration is by use of environment variables.
+
+## DigitalOcean
+
+The following variables are required.
 
 * DIGITAL_OCEAN_TOKEN
 * BARUWA_ACTIVATION_KEY
@@ -24,22 +40,52 @@ The following variables are optional.
 * DIGITAL_OCEAN_REGION - defaults to Frankfurt 1
 * DIGITAL_OCEAN_SIZE - defaults to 4GB
 
+## Linode
+
+The following variables are required.
+
+* LINODE_TOKEN
+* BARUWA_ACTIVATION_KEY
+
+The following variables are optional.
+
+* LINODE_REGION - defaults to frankfurt
+* LINODE_SIZE - defaults to 4096
+* LINODE_LABEL - defaults to baruwa-enterprise-edition-vagrant
+
 ## SSH Keys
 
 Generate an SSH key pair for use by the plugin.
 
+## DigitalOcean
+
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/digital_ocean_rsa
+
+## Linode
+
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/linode_rsa
 
 ## Run
 
 After generating the ssh key pair, you should run the following
 command to setup the VPS.
 
+## DigitalOcean
+
+    cd digitalocean
     export DIGITAL_OCEAN_TOKEN="digitalocean token" BARUWA_ACTIVATION_KEY="key"
     vagrant up --provider=digital_ocean
 
+## Linode
+
+    cd linode
+    export LINODE_TOKEN="linode token" BARUWA_ACTIVATION_KEY="key"
+    vagrant up --provider=linode
+
 After the VPS has been setup you can login and proceed with
 configuration.
+
+    vagrant ssh
 
 ## Configuration
 
