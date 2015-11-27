@@ -72,13 +72,11 @@ command to setup the VPS.
 
 ## DigitalOcean
 
-    cd digitalocean
     export DIGITAL_OCEAN_TOKEN="digitalocean token" BARUWA_ACTIVATION_KEY="key"
     vagrant up --provider=digital_ocean
 
 ## Linode
 
-    cd linode
     export LINODE_TOKEN="linode token" BARUWA_ACTIVATION_KEY="key"
     vagrant up --provider=linode
 
