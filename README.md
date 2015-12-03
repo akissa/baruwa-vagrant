@@ -1,10 +1,11 @@
 # Baruwa Enterprise Edition Vagrant Setup
 
-Sets up and converts a CentOS 6 VPS to Baruwa Enterprise Edition.
+Sets up and converts a CentOS 6 VPS to Baruwa Enterprise Edition in the cloud.
 Currently the following providers are supported.
 
-* DigitalOcean
-* Linode
+* [Rimuhosting](http://rimuhosting.com/?r=41325919050882007081895014642231402396)
+* [DigitalOcean](https://www.digitalocean.com/?refcode=2e62b2989fc4)
+* [Linode](https://www.linode.com/?r=f3c4f62f65cc04d7542d57c077ebf83df1962d8a)
 
 ## Requirements
 
@@ -12,6 +13,7 @@ Currently the following providers are supported.
 
 One of the following providers
 
+* [Vagrant Rimu provider](https://github.com/akissa/vagrant-rimu)
 * [Vagrant DigitalOcean provider](https://github.com/smdahlen/vagrant-digitalocean)
 * [Vagrant Linode provider](https://github.com/displague/vagrant-linode)
 
@@ -26,6 +28,20 @@ You should then clone this repo to your machine.
 ## Configuration
 
 Configuration is by use of environment variables.
+
+## Rimuhosting
+
+The following variables are required.
+
+* RIMUHOSTING_APIKEY
+* RIMUHOSTING_HOSTNAME
+* BARUWA_ACTIVATION_KEY
+
+The following variables are optional.
+
+* RIMUHOSTING_DISK1 - 20GB
+* RIMUHOSTING_REGION - defaults to DCDALLAS, the Dallas DC
+* RIMUHOSTING_SIZE - defaults to 4GB
 
 ## DigitalOcean
 
@@ -57,6 +73,10 @@ The following variables are optional.
 
 Generate an SSH key pair for use by the plugin.
 
+## Rimuhosting
+
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/rimuhosting_rsa
+
 ## DigitalOcean
 
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/digital_ocean_rsa
@@ -69,6 +89,11 @@ Generate an SSH key pair for use by the plugin.
 
 After generating the ssh key pair, you should run the following
 command to setup the VPS.
+
+## Rimuhosting
+
+    export RIMUHOSTING_APIKEY="rimuhosting apikey" RIMUHOSTING_HOSTNAME="fqdn hostname" BARUWA_ACTIVATION_KEY="key"
+    vagrant up --provider=rimu
 
 ## DigitalOcean
 

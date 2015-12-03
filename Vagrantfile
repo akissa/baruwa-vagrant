@@ -2,6 +2,30 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
+  config.ssh.insert_key = true
+
+  config.vm.provider :rimu do |provider, override|
+    override.ssh.private_key_path = '~/.ssh/rimuhosting_rsa'
+    provider.api_key = ENV['RIMUHOSTING_APIKEY']
+    provider.host_name = ENV['RIMUHOSTING_HOSTNAME']
+    provider.distro_code = 'centos6.64'
+    if ENV['RIMUHOSTING_REGION']
+      provider.data_centre = ENV['RIMUHOSTING_REGION']
+    else
+      provider.data_centre = 'DCDALLAS'
+    end
+    if ENV['RIMUHOSTING_SIZE']
+      provider.memory_mb = ENV['RIMUHOSTING_SIZE']
+    else
+      provider.memory_mb = 4096
+    end
+    if ENV['RIMUHOSTING_DISK1']
+      provider.disk_space_mb = ENV['RIMUHOSTING_DISK1']
+    else
+      provider.disk_space_mb = 20000
+    end
+  end
+
   config.vm.provider :digital_ocean do |provider, override|
     override.vm.box = 'digital_ocean'
     override.ssh.private_key_path = '~/.ssh/digital_ocean_rsa'
