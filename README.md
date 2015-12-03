@@ -39,7 +39,7 @@ The following variables are required.
 
 The following variables are optional.
 
-* RIMUHOSTING_DISK1 - 20GB
+* RIMUHOSTING_DISK1 - defaults to 20GB
 * RIMUHOSTING_REGION - defaults to DCDALLAS, the Dallas DC
 * RIMUHOSTING_SIZE - defaults to 4GB
 
