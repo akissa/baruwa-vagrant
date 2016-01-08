@@ -71,6 +71,10 @@ Vagrant.configure(2) do |config|
     end
   end
 
+  config.vm.provision 'shell' do |s2|
+    s2.path = 'scripts/syslog.sh'
+  end
+
   config.vm.provision 'shell' do |s|
     s.path = 'scripts/provision.py'
     s.args = [ENV['BARUWA_ACTIVATION_KEY']]
