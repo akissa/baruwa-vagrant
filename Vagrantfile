@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision 'shell' do |s2|
-    s2.path = 'scripts/syslog.sh'
+    s2.path = 'scripts/bootstrap.sh'
   end
 
   config.vm.provision 'shell' do |s|

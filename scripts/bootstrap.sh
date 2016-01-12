@@ -12,3 +12,7 @@ $IMUXSockRateLimitInterval 0
 $IMUxSockRateLimitSeverity 7
 EOF
 service rsyslog restart
+[ `grep 'mirrors.kernel.org' /etc/yum.repos.d/CentOS-Base.repo` ] || {
+    unalias cp || /bin/true
+    cp -f /vagrant/scripts/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
+}
