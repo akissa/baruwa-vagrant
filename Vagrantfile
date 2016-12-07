@@ -71,6 +71,24 @@ Vagrant.configure(2) do |config|
     end
   end
 
+  config.vm.provider :vultr do |provider, override|
+    override.ssh.private_key_path = '~/.ssh/vultr_rsa'
+    override.vm.box = 'vultr'
+    override.vm.box_url = 'https://github.com/p0deje/vagrant-vultr/raw/master/box/vultr.box'
+    provider.token = ENV['VULTR_TOKEN']
+    provider.distribution = 'CentOS 6 x64'
+    if ENV['VULTR_REGION']
+      provider.datacenter = ENV['VULTR_REGION']
+    else
+      provider.datacenter = 'Frankfurt'
+    end
+    if ENV['VULTR_SIZE']
+      provider.plan = ENV['VULTR_SIZE']
+    else
+      provider.plan = '4096 MB RAM,90 GB SSD,4.00 TB BW'
+    end
+  end
+
   config.vm.provision 'shell' do |s2|
     s2.path = 'scripts/bootstrap.sh'
   end

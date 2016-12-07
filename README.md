@@ -4,6 +4,7 @@ Sets up and converts a CentOS 6 VPS to Baruwa Enterprise Edition in the cloud.
 Currently the following providers are supported.
 
 * [Rimuhosting](http://rimuhosting.com/?r=41325919050882007081895014642231402396)
+* [Vultr](http://www.vultr.com/?ref=7040437)
 * [DigitalOcean](https://www.digitalocean.com/?refcode=2e62b2989fc4)
 * [Linode](https://www.linode.com/?r=f3c4f62f65cc04d7542d57c077ebf83df1962d8a)
 
@@ -14,6 +15,7 @@ Currently the following providers are supported.
 One of the following providers
 
 * [Vagrant Rimu provider](https://github.com/akissa/vagrant-rimu)
+* [Vagrant Vultr provider](https://github.com/p0deje/vagrant-vultr)
 * [Vagrant DigitalOcean provider](https://github.com/smdahlen/vagrant-digitalocean)
 * [Vagrant Linode provider](https://github.com/displague/vagrant-linode)
 
@@ -42,6 +44,19 @@ The following variables are optional.
 * RIMUHOSTING_DISK1 - defaults to 20GB
 * RIMUHOSTING_REGION - defaults to DCDALLAS, the Dallas DC
 * RIMUHOSTING_SIZE - defaults to 4GB
+
+## Vultr
+
+The following variables are required.
+
+* VULTR_TOKEN
+* VULTR_HOSTNAME
+* BARUWA_ACTIVATION_KEY
+
+The following variables are optional.
+
+* VULTR_REGION - defaults to Frankfurt
+* VULTR_SIZE - defaults to 4096 MB RAM,90 GB SSD,4.00 TB BW
 
 ## DigitalOcean
 
@@ -77,6 +92,10 @@ Generate an SSH key pair for use by the plugin.
 
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/rimuhosting_rsa
 
+## Vultr
+
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/vultr_rsa
+
 ## DigitalOcean
 
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/digital_ocean_rsa
@@ -94,6 +113,11 @@ command to setup the VPS.
 
     export RIMUHOSTING_APIKEY="rimuhosting apikey" RIMUHOSTING_HOSTNAME="fqdn hostname" BARUWA_ACTIVATION_KEY="key"
     vagrant up --provider=rimu
+
+## Vultr
+
+    export VULTR_TOKEN="Vultr token" BARUWA_ACTIVATION_KEY="key"
+    vagrant up --provider=vultr
 
 ## DigitalOcean
 
