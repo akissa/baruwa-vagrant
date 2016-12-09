@@ -76,11 +76,11 @@ Vagrant.configure(2) do |config|
     override.vm.box = 'vultr'
     override.vm.box_url = 'https://github.com/p0deje/vagrant-vultr/raw/master/box/vultr.box'
     provider.token = ENV['VULTR_TOKEN']
-    provider.distribution = 'CentOS 6 x64'
+    provider.os = 'CentOS 6 x64'
     if ENV['VULTR_REGION']
-      provider.datacenter = ENV['VULTR_REGION']
+      provider.region = ENV['VULTR_REGION']
     else
-      provider.datacenter = 'Frankfurt'
+      provider.region = 'Frankfurt'
     end
     if ENV['VULTR_SIZE']
       provider.plan = ENV['VULTR_SIZE']
@@ -91,6 +91,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell' do |s2|
     s2.path = 'scripts/bootstrap.sh'
+    s2.args = [ENV['BARUWA_PROFILE'], ENV['VULTR_HOSTNAME']]
   end
 
   config.vm.provision 'shell' do |s|

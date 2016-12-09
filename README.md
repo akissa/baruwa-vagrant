@@ -38,6 +38,7 @@ The following variables are required.
 * RIMUHOSTING_APIKEY
 * RIMUHOSTING_HOSTNAME
 * BARUWA_ACTIVATION_KEY
+* BARUWA_PROFILE
 
 The following variables are optional.
 
@@ -52,6 +53,7 @@ The following variables are required.
 * VULTR_TOKEN
 * VULTR_HOSTNAME
 * BARUWA_ACTIVATION_KEY
+* BARUWA_PROFILE
 
 The following variables are optional.
 
@@ -64,6 +66,7 @@ The following variables are required.
 
 * DIGITAL_OCEAN_TOKEN
 * BARUWA_ACTIVATION_KEY
+* BARUWA_PROFILE
 
 The following variables are optional.
 
@@ -77,6 +80,7 @@ The following variables are required.
 
 * LINODE_TOKEN
 * BARUWA_ACTIVATION_KEY
+* BARUWA_PROFILE
 
 The following variables are optional.
 
@@ -111,22 +115,22 @@ command to setup the VPS.
 
 ## Rimuhosting
 
-    export RIMUHOSTING_APIKEY="rimuhosting apikey" RIMUHOSTING_HOSTNAME="fqdn hostname" BARUWA_ACTIVATION_KEY="key"
+    export RIMUHOSTING_APIKEY="rimuhosting apikey" RIMUHOSTING_HOSTNAME="fqdn hostname" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
     vagrant up --provider=rimu
 
 ## Vultr
 
-    export VULTR_TOKEN="Vultr token" BARUWA_ACTIVATION_KEY="key"
+    export VULTR_TOKEN="Vultr token" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
     vagrant up --provider=vultr
 
 ## DigitalOcean
 
-    export DIGITAL_OCEAN_TOKEN="digitalocean token" BARUWA_ACTIVATION_KEY="key"
+    export DIGITAL_OCEAN_TOKEN="digitalocean token" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
     vagrant up --provider=digital_ocean
 
 ## Linode
 
-    export LINODE_TOKEN="linode token" BARUWA_ACTIVATION_KEY="key"
+    export LINODE_TOKEN="linode token" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
     vagrant up --provider=linode
 
 After the VPS has been setup you can login and proceed with

@@ -52,9 +52,10 @@ def main():
             'device-mapper-multipath-libs',
             'fuse',
             'device-mapper-multipath',
+            'ntp',
         ]
         pkgs_to_download = [
-            'baruwa-release-6-7.el6.12.4.noarch.rpm',
+            'baruwa-release-6-8.el6.12.3.noarch.rpm',
             'dbus-python-0.83.0-6.1.el6.x86_64.rpm',
             'python-dmidecode-3.10.13-3.el6_4.x86_64.rpm',
             'python-ethtool-0.6-5.el6.x86_64.rpm',
@@ -66,6 +67,17 @@ def main():
             'rhnlib-2.5.55-2.el6.noarch.rpm',
             'rhnsd-5.0.9-2.el6.x86_64.rpm',
             'yum-rhn-plugin-1.9.4-2.el6.noarch.rpm',
+            'm2crypto-0.20.2-9.el6.x86_64.rpm',
+            'libxml2-python-2.7.6-21.el6_8.1.x86_64.rpm',
+            'pyOpenSSL-0.13.1-2.el6.x86_64.rpm',
+            'libgudev1-147-2.73.el6_8.2.x86_64.rpm',
+            'pygobject2-2.20.0-5.el6.x86_64.rpm',
+            'libnl-1.1.4-2.el6.x86_64.rpm',
+        ]
+        pkgs_to_install = [
+            'baruwa-setup',
+            'nginx',
+            'exim',
         ]
         activation_key = sys.argv[1]
         cmd = "rhnreg_ks --serverUrl=%s --activationkey=%s" % \
@@ -79,8 +91,19 @@ def main():
         os.system(
             "rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-BARUWA-6"
         )
-        os.system("yum install baruwa-setup -y")
+        for pkg in pkgs_to_install:
+            print "Installing bootstrap package %s" % pkg
+            os.system("yum install %s -y" % pkg)
         os.system("rm -rf *.rpm")
+        files_to_rm = [
+            '/etc/yum.repos.d/epel.repo',
+            '/etc/yum.repos.d/epel-testing.repo',
+            '/etc/yum.repos.d/CentOS-Base.repo.rpmsave'
+            '/etc/yum.repos.d/CentOS-Base.repo']
+        for filename in files_to_rm:
+            if os.path.exists(filename):
+                print "Unlinking repo file: %s" % filename
+                os.unlink(filename)
     else:
         print "The system is already registered"
 
