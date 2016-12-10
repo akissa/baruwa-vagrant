@@ -36,7 +36,7 @@ Configuration is by use of environment variables.
 The following variables are required.
 
 * RIMUHOSTING_APIKEY
-* RIMUHOSTING_HOSTNAME
+* BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
 * BARUWA_PROFILE
 
@@ -51,7 +51,7 @@ The following variables are optional.
 The following variables are required.
 
 * VULTR_TOKEN
-* VULTR_HOSTNAME
+* BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
 * BARUWA_PROFILE
 
@@ -65,12 +65,12 @@ The following variables are optional.
 The following variables are required.
 
 * DIGITAL_OCEAN_TOKEN
+* BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
 * BARUWA_PROFILE
 
 The following variables are optional.
 
-* DIGITAL_OCEAN_HOSTNAME - defaults to baruwa.home.topdog-software.com
 * DIGITAL_OCEAN_REGION - defaults to Frankfurt 1
 * DIGITAL_OCEAN_SIZE - defaults to 4GB
 
@@ -79,6 +79,7 @@ The following variables are optional.
 The following variables are required.
 
 * LINODE_TOKEN
+* BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
 * BARUWA_PROFILE
 
@@ -115,22 +116,34 @@ command to setup the VPS.
 
 ## Rimuhosting
 
-    export RIMUHOSTING_APIKEY="rimuhosting apikey" RIMUHOSTING_HOSTNAME="fqdn hostname" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
+    export RIMUHOSTING_APIKEY="rimuhosting apikey"
+    export BARUWA_HOSTNAME="fqdn hostname"
+    export BARUWA_ACTIVATION_KEY="key"
+    export BARUWA_PROFILE="profile type"
     vagrant up --provider=rimu
 
 ## Vultr
 
-    export VULTR_TOKEN="Vultr token" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
+    export VULTR_TOKEN="Vultr token"
+    export BARUWA_HOSTNAME="fqdn hostname"
+    export BARUWA_ACTIVATION_KEY="key"
+    export BARUWA_PROFILE="profile type"
     vagrant up --provider=vultr
 
 ## DigitalOcean
 
-    export DIGITAL_OCEAN_TOKEN="digitalocean token" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
+    export DIGITAL_OCEAN_TOKEN="digitalocean token"
+    export BARUWA_HOSTNAME="fqdn hostname"
+    export BARUWA_ACTIVATION_KEY="key"
+    export BARUWA_PROFILE="profile type"
     vagrant up --provider=digital_ocean
 
 ## Linode
 
-    export LINODE_TOKEN="linode token" BARUWA_ACTIVATION_KEY="key" BARUWA_PROFILE="profile type"
+    export LINODE_TOKEN="linode token"
+    export BARUWA_HOSTNAME="fqdn hostname"
+    export BARUWA_ACTIVATION_KEY="key"
+    export BARUWA_PROFILE="profile type"
     vagrant up --provider=linode
 
 After the VPS has been setup you can login and proceed with

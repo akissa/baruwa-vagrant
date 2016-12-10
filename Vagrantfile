@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider :rimu do |provider, override|
     override.ssh.private_key_path = '~/.ssh/rimuhosting_rsa'
     provider.api_key = ENV['RIMUHOSTING_APIKEY']
-    provider.host_name = ENV['RIMUHOSTING_HOSTNAME']
+    provider.host_name = ENV['BARUWA_HOSTNAME']
     provider.distro_code = 'centos6.64'
     if ENV['RIMUHOSTING_REGION']
       provider.data_centre = ENV['RIMUHOSTING_REGION']
@@ -29,13 +29,13 @@ Vagrant.configure(2) do |config|
   config.vm.provider :digital_ocean do |provider, override|
     override.vm.box = 'digital_ocean'
     override.ssh.private_key_path = '~/.ssh/digital_ocean_rsa'
-    if ENV['DIGITAL_OCEAN_HOSTNAME']
-      override.vm.hostname = ENV['DIGITAL_OCEAN_HOSTNAME']
+    if ENV['BARUWA_HOSTNAME']
+      override.vm.hostname = ENV['BARUWA_HOSTNAME']
     else
       override.vm.hostname = 'baruwa.home.topdog-software.com'
     end
     provider.token = ENV['DIGITAL_OCEAN_TOKEN']
-    provider.image = 'centos-6-5-x64'
+    provider.image = 'centos-6-x64'
     if ENV['DIGITAL_OCEAN_REGION']
       provider.region = ENV['DIGITAL_OCEAN_REGION']
     else
@@ -64,8 +64,8 @@ Vagrant.configure(2) do |config|
     else
       provider.plan = '4096'
     end
-    if ENV['LINODE_LABEL']
-      provider.label = ENV['LINODE_LABEL']
+    if ENV['BARUWA_HOSTNAME']
+      provider.label = ENV['BARUWA_HOSTNAME']
     else
       provider.label = 'baruwa-enterprise-edition-vagrant'
     end
@@ -91,7 +91,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell' do |s2|
     s2.path = 'scripts/bootstrap.sh'
-    s2.args = [ENV['BARUWA_PROFILE'], ENV['VULTR_HOSTNAME']]
+    s2.args = [ENV['BARUWA_PROFILE'], ENV['BARUWA_HOSTNAME']]
   end
 
   config.vm.provision 'shell' do |s|
