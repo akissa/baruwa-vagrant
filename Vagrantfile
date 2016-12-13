@@ -64,8 +64,8 @@ Vagrant.configure(2) do |config|
     else
       provider.plan = '4096'
     end
-    if ENV['BARUWA_HOSTNAME']
-      provider.label = ENV['BARUWA_HOSTNAME']
+    if ENV['LINODE_LABEL']
+      provider.label = ENV['LINODE_LABEL']
     else
       provider.label = 'baruwa-enterprise-edition-vagrant'
     end
