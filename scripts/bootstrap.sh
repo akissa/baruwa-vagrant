@@ -62,12 +62,12 @@ fi
 }
 if egrep -xq '^HOSTNAME=vultr.guest|HOSTNAME=digitalocean|HOSTNAME=localhost.localdomain$' /etc/sysconfig/network; then
     sed -ie "s/^HOSTNAME=.*$/HOSTNAME=$(hostname)/" /etc/sysconfig/network
-    if ! grep -Fxq 'PEERDNS=no' /etc/sysconfig/network-scripts/ifcfg-eth0; then
-        echo 'PEERDNS=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+    if ! grep -Fxq 'PEERDNS="no"' /etc/sysconfig/network-scripts/ifcfg-eth0; then
+        echo 'PEERDNS="no"' >> /etc/sysconfig/network-scripts/ifcfg-eth0
         echo 'make_resolv_conf(){:}' >> /etc/dhclient-enter-hooks
     fi
-    if ! grep -Fxq 'IPV6_PEERDNS=no' /etc/sysconfig/network-scripts/ifcfg-eth0; then
-        echo 'IPV6_PEERDNS=no' >> /etc/sysconfig/network-scripts/ifcfg-eth0
+    if ! grep -Fxq 'IPV6_PEERDNS="no"' /etc/sysconfig/network-scripts/ifcfg-eth0; then
+        echo 'IPV6_PEERDNS="no"' >> /etc/sysconfig/network-scripts/ifcfg-eth0
     fi
 fi
 /usr/bin/test -e /etc/rsyslog.d/ratelimit.conf || {
