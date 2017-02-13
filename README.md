@@ -38,7 +38,7 @@ The following variables are required.
 * RIMUHOSTING_APIKEY
 * BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
-* BARUWA_PROFILE
+* BARUWA_PROFILE ['backend', 'cache', 'indexer', 'mail', 'mq', 'node', 'web', 'standalone', 'db']
 
 The following variables are optional.
 

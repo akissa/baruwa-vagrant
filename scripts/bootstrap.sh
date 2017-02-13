@@ -46,6 +46,10 @@ case "$1" in
         cat /vagrant/scripts/files/web > /etc/sysconfig/iptables
         touch /etc/baruwa/acme.disable
         ;;
+    "db")
+        cat /vagrant/scripts/files/db > /etc/sysconfig/iptables
+        touch /etc/baruwa/acme.disable
+        ;;
     *)
         cat /vagrant/scripts/files/standalone > /etc/sysconfig/iptables
         ;;

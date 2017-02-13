@@ -33,6 +33,10 @@ except ImportError:
 
 
 BARUWA_NET_URL = 'https://bn.baruwa.com/XMLRPC'
+PROFILES = [
+    'backend', 'cache', 'indexer', 'mail', 'mq',
+    'node', 'web', 'standalone', 'db'
+]
 
 
 def is_registered():
@@ -76,10 +80,21 @@ def main():
         ]
         pkgs_to_install = [
             'baruwa-setup',
-            'nginx',
             'exim',
         ]
-        activation_key = sys.argv[1]
+        argc = len(sys.argv)
+        if argc >= 3:
+            profile = sys.argv[1]
+            activation_key = sys.argv[2]
+        elif argc == 2:
+            profile = 'standalone'
+            activation_key = sys.argv[1]
+        else:
+            raise ValueError('Incorrect Params provided')
+        if profile not in PROFILES:
+            profile = 'standalone'
+        if profile in ['web', 'node', 'standalone']:
+            pkgs_to_install.append('nginx')
         cmd = "rhnreg_ks --serverUrl=%s --activationkey=%s" % \
             (BARUWA_NET_URL, activation_key)
         for pkg in pkgs_to_download:
@@ -88,12 +103,6 @@ def main():
         os.system(cmd)
         for pkg in pkgs_to_rm:
             os.system("yum erase %s -y" % pkg)
-        os.system(
-            "rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-BARUWA-6"
-        )
-        for pkg in pkgs_to_install:
-            print "Installing bootstrap package %s" % pkg
-            os.system("yum install %s -y" % pkg)
         os.system("rm -rf *.rpm")
         files_to_rm = [
             '/etc/yum.repos.d/epel.repo',
@@ -104,6 +113,12 @@ def main():
             if os.path.exists(filename):
                 print "Unlinking repo file: %s" % filename
                 os.unlink(filename)
+        os.system(
+            "rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-BARUWA-6"
+        )
+        for pkg in pkgs_to_install:
+            print "Installing bootstrap package %s" % pkg
+            os.system("yum install %s -y" % pkg)
     else:
         print "The system is already registered"
 

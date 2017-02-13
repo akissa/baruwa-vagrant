@@ -96,6 +96,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell' do |s|
     s.path = 'scripts/provision.py'
-    s.args = [ENV['BARUWA_ACTIVATION_KEY']]
+    s.args = [ENV['BARUWA_PROFILE'], ENV['BARUWA_ACTIVATION_KEY']]
   end
 end
