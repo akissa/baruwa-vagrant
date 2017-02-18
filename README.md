@@ -44,7 +44,7 @@ The following variables are optional.
 
 * RIMUHOSTING_DISK1 - defaults to 20GB
 * RIMUHOSTING_REGION - defaults to DCDALLAS, the Dallas DC
-* RIMUHOSTING_SIZE - defaults to 4GB
+* RIMUHOSTING_SIZE - defaults to 8GB
 
 ## Vultr
 
@@ -58,7 +58,7 @@ The following variables are required.
 The following variables are optional.
 
 * VULTR_REGION - defaults to Frankfurt
-* VULTR_SIZE - defaults to 4096 MB RAM,90 GB SSD,4.00 TB BW
+* VULTR_SIZE - defaults to 8192 MB RAM,150 GB SSD,5.00 TB BW
 
 ## DigitalOcean
 
@@ -72,7 +72,7 @@ The following variables are required.
 The following variables are optional.
 
 * DIGITAL_OCEAN_REGION - defaults to Frankfurt 1
-* DIGITAL_OCEAN_SIZE - defaults to 4GB
+* DIGITAL_OCEAN_SIZE - defaults to 8GB
 
 ## Linode
 
@@ -86,7 +86,7 @@ The following variables are required.
 The following variables are optional.
 
 * LINODE_REGION - defaults to frankfurt
-* LINODE_SIZE - defaults to 4096
+* LINODE_SIZE - defaults to 8192
 * LINODE_LABEL - defaults to baruwa-enterprise-edition-vagrant
 
 ## SSH Keys

@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
     if ENV['RIMUHOSTING_SIZE']
       provider.memory_mb = ENV['RIMUHOSTING_SIZE']
     else
-      provider.memory_mb = 4096
+      provider.memory_mb = 8192
     end
     if ENV['RIMUHOSTING_DISK1']
       provider.disk_space_mb = ENV['RIMUHOSTING_DISK1']
@@ -44,7 +44,7 @@ Vagrant.configure(2) do |config|
     if ENV['DIGITAL_OCEAN_SIZE']
       provider.size = ENV['DIGITAL_OCEAN_SIZE']
     else
-      provider.size = '4gb'
+      provider.size = '8gb'
     end
   end
 
@@ -62,7 +62,7 @@ Vagrant.configure(2) do |config|
     if ENV['LINODE_SIZE']
       provider.plan = ENV['LINODE_SIZE']
     else
-      provider.plan = '4096'
+      provider.plan = '8192'
     end
     if ENV['LINODE_LABEL']
       provider.label = ENV['LINODE_LABEL']
@@ -85,7 +85,7 @@ Vagrant.configure(2) do |config|
     if ENV['VULTR_SIZE']
       provider.plan = ENV['VULTR_SIZE']
     else
-      provider.plan = '4096 MB RAM,90 GB SSD,4.00 TB BW'
+      provider.plan = '8192 MB RAM,150 GB SSD,5.00 TB BW'
     end
   end
 
