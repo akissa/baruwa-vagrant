@@ -85,7 +85,7 @@ Vagrant.configure(2) do |config|
     if ENV['VULTR_SIZE']
       provider.plan = ENV['VULTR_SIZE']
     else
-      provider.plan = '8192 MB RAM,150 GB SSD,5.00 TB BW'
+      provider.plan = '4096 MB RAM,60 GB SSD,3.00 TB BW'
     end
   end
 
