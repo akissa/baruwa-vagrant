@@ -1,10 +1,10 @@
 [base]
-name=CentOS-6.8 - Base
-baseurl=https://mirrors.kernel.org/centos/6.8/os/x86_64/
+name=CentOS-6 - Base
+baseurl=https://mirrors.kernel.org/centos/6/os/x86_64/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 [updates]
-name=CentOS-6.8 - Updates
-baseurl=https://mirrors.kernel.org/centos/6.8/updates/x86_64/
+name=CentOS-6 - Updates
+baseurl=https://mirrors.kernel.org/centos/6/updates/x86_64/
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6

@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
     provider.api_key = ENV['RIMUHOSTING_APIKEY']
     provider.host_name = ENV['BARUWA_HOSTNAME']
     provider.distro_code = 'centos6.64'
+    override.nfs.functional = false
     if ENV['RIMUHOSTING_REGION']
       provider.data_centre = ENV['RIMUHOSTING_REGION']
     else
@@ -29,6 +30,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider :digital_ocean do |provider, override|
     override.vm.box = 'digital_ocean'
     override.ssh.private_key_path = '~/.ssh/digital_ocean_rsa'
+    override.nfs.functional = false
     if ENV['BARUWA_HOSTNAME']
       override.vm.hostname = ENV['BARUWA_HOSTNAME']
     else
@@ -50,6 +52,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :linode do |provider, override|
     override.ssh.private_key_path = '~/.ssh/linode_rsa'
+    override.nfs.functional = false
     override.vm.box = 'linode'
     override.vm.box_url = 'https://github.com/displague/vagrant-linode/raw/master/box/linode.box'
     provider.token = ENV['LINODE_TOKEN']
@@ -73,6 +76,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :vultr do |provider, override|
     override.ssh.private_key_path = '~/.ssh/vultr_rsa'
+    override.nfs.functional = false
     override.vm.box = 'vultr'
     override.vm.box_url = 'https://github.com/p0deje/vagrant-vultr/raw/master/box/vultr.box'
     provider.token = ENV['VULTR_TOKEN']
