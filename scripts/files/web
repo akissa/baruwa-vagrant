@@ -15,8 +15,23 @@
 -A INPUT -m state --state NEW -m udp -p udp --dport 161 -j ACCEPT
 -A INPUT -m state --state NEW -m udp -p udp --dport 3542 -j ACCEPT
 -A INPUT -m state --state NEW -m udp -p udp --dport 11211 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 8300 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 8301 -j ACCEPT
+-A INPUT -m state --state NEW -m udp -p udp --dport 8301 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 8302 -j ACCEPT
+-A INPUT -m state --state NEW -m udp -p udp --dport 8302 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 8500 -j ACCEPT
 -A SSHSCAN -m recent --set --name SSH
 -A SSHSCAN -m recent --update --seconds 300 --hitcount 5 --name SSH -j LOG --log-level info --log-prefix "SSH SCAN blocked: "
 -A SSHSCAN -m recent --update --seconds 300 --hitcount 5 --name SSH -j DROP
 -A SSHSCAN -j ACCEPT
+COMMIT
+*nat
+:PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A OUTPUT -d 127.0.0.1/32 -p udp -m udp --dport 53 -j REDIRECT --to-ports 8600
+-A OUTPUT -d 127.0.0.1/32 -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
+-A PREROUTING -d 127.0.0.1/32 -p udp -m udp --dport 53 -j REDIRECT --to-ports 8600
+-A PREROUTING -d 127.0.0.1/32 -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
 COMMIT
