@@ -95,6 +95,8 @@ def main():
             profile = 'standalone'
         if profile in ['web', 'node', 'standalone']:
             pkgs_to_install.append('nginx')
+        if profile in ['standalone', 'db', 'backend']:
+            pkgs_to_install.append('pgbouncer')
         cmd = "rhnreg_ks --serverUrl=%s --activationkey=%s" % \
             (BARUWA_NET_URL, activation_key)
         for pkg in pkgs_to_download:
