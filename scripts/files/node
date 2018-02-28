@@ -18,7 +18,7 @@
 -A INPUT -m state --state NEW -m udp -p udp --dport 161 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 1027 -j ACCEPT
 -A INPUT -m state --state NEW -m udp -p udp --dport 3542 -j ACCEPT
--A INPUT -m state --state NEW -m udp -p udp --dport 11211 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 11211 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 8300 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 8301 -j ACCEPT
 -A INPUT -m state --state NEW -m udp -p udp --dport 8301 -j ACCEPT
