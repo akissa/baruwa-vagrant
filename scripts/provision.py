@@ -97,12 +97,18 @@ def main():
             profile = 'standalone'
         if profile in ['web', 'node', 'standalone']:
             pkgs_to_install.append('nginx')
+            pkgs_to_install.append('baruwa-common')
         if profile in ['standalone', 'db', 'backend']:
             pkgs_to_install.append('pgbouncer')
             pkgs_to_install.append('postgresql-server')
             pkgs_to_install.append('rabbitmq-server')
         if profile in ['mq']:
             pkgs_to_install.append('rabbitmq-server')
+        if profile in ['mail']:
+            pkgs_to_install.append('baruwa-common')
+            pkgs_to_install.append('spamassassin')
+        if profile in ['node']:
+            pkgs_to_install.append('spamassassin')
         cmd = "rhnreg_ks --serverUrl=%s --activationkey=%s" % \
             (BARUWA_NET_URL, activation_key)
         for pkg in pkgs_to_download:
