@@ -31,6 +31,7 @@ Vagrant.configure(2) do |config|
     override.vm.box = 'digital_ocean'
     override.ssh.private_key_path = '~/.ssh/digital_ocean_rsa'
     override.nfs.functional = false
+    override.vm.allowed_synced_folder_types = :rsync
     if ENV['BARUWA_HOSTNAME']
       override.vm.hostname = ENV['BARUWA_HOSTNAME']
     else
