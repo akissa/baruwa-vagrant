@@ -53,7 +53,7 @@ The following variables are required.
 * VULTR_TOKEN
 * BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
-* BARUWA_PROFILE
+* BARUWA_PROFILE [backend, cache, indexer, mail, mq, node, web, standalone, db]
 
 The following variables are optional.
 
@@ -67,7 +67,7 @@ The following variables are required.
 * DIGITAL_OCEAN_TOKEN
 * BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
-* BARUWA_PROFILE
+* BARUWA_PROFILE [backend, cache, indexer, mail, mq, node, web, standalone, db]
 
 The following variables are optional.
 
@@ -81,7 +81,7 @@ The following variables are required.
 * LINODE_TOKEN
 * BARUWA_HOSTNAME
 * BARUWA_ACTIVATION_KEY
-* BARUWA_PROFILE
+* BARUWA_PROFILE [backend, cache, indexer, mail, mq, node, web, standalone, db]
 
 The following variables are optional.
 
