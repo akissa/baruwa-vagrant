@@ -57,6 +57,7 @@ def main():
             'fuse',
             'device-mapper-multipath',
             'ntp',
+            'audit-libs-python',
         ]
         pkgs_to_download = [
             'baruwa-release-6-9.el6.12.4.noarch.rpm',
@@ -81,6 +82,7 @@ def main():
         pkgs_to_install = [
             'baruwa-setup',
             'exim',
+            'python-backports-ssl_match_hostname',
         ]
         argc = len(sys.argv)
         if argc >= 3:
@@ -97,6 +99,10 @@ def main():
             pkgs_to_install.append('nginx')
         if profile in ['standalone', 'db', 'backend']:
             pkgs_to_install.append('pgbouncer')
+            pkgs_to_install.append('postgresql-server')
+            pkgs_to_install.append('rabbitmq-server')
+        if profile in ['mq']:
+            pkgs_to_install.append('rabbitmq-server')
         cmd = "rhnreg_ks --serverUrl=%s --activationkey=%s" % \
             (BARUWA_NET_URL, activation_key)
         for pkg in pkgs_to_download:
