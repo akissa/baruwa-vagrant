@@ -49,6 +49,9 @@ Vagrant.configure(2) do |config|
     else
       provider.size = '8gb'
     end
+    if ENV['DIGITAL_OCEAN_PRIVATE_NET']
+        provider.private_networking = true
+    end
   end
 
   config.vm.provider :linode do |provider, override|
