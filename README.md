@@ -19,6 +19,11 @@ One of the following providers
 * [Vagrant DigitalOcean provider](https://github.com/smdahlen/vagrant-digitalocean)
 * [Vagrant Linode provider](https://github.com/displague/vagrant-linode)
 
+## Plugin Installation
+
+The provider plugins can be installed using the `vagrant plugin install` command.
+Refer to the specific plugins documentation for details on usage and configuration.
+
 ## Installation
 
 You need to install Vagrant and one of the provider plugins above.
@@ -73,6 +78,7 @@ The following variables are optional.
 
 * DIGITAL_OCEAN_REGION - defaults to Frankfurt 1
 * DIGITAL_OCEAN_SIZE - defaults to 8GB
+* DIGITAL_OCEAN_PRIVATE_NET - defaults to false
 
 ## Linode
 
@@ -136,6 +142,7 @@ command to setup the VPS.
     export BARUWA_HOSTNAME="fqdn hostname"
     export BARUWA_ACTIVATION_KEY="key"
     export BARUWA_PROFILE="profile type"
+    export DIGITAL_OCEAN_PRIVATE_NET=true
     vagrant up --provider=digital_ocean
 
 ## Linode
