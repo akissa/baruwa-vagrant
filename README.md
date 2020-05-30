@@ -142,7 +142,6 @@ command to setup the VPS.
     export BARUWA_HOSTNAME="fqdn hostname"
     export BARUWA_ACTIVATION_KEY="key"
     export BARUWA_PROFILE="profile type"
-    export DIGITAL_OCEAN_PRIVATE_NET=true
     vagrant up --provider=digital_ocean
 
 ## Linode
