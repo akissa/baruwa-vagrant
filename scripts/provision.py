@@ -83,6 +83,7 @@ def main():
             'baruwa-setup',
             'exim',
             'python-backports-ssl_match_hostname',
+            'baruwa-utils',
         ]
         argc = len(sys.argv)
         if argc >= 3:
