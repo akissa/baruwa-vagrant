@@ -83,6 +83,9 @@ SYSTEM_PROFILE="full"
 EOF
 		;;
 	esac
+	[ -e /etc/baruwa-profile ] && {
+		[ -e /etc/sysconfig/baruwa-profile ] || ln -s /etc/baruwa-profile /etc/sysconfig/baruwa-profile
+	}
 	service iptables restart
 	chkconfig iptables on
 	if [ "$2" != "" ]; then
