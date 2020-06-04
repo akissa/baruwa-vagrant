@@ -18,41 +18,69 @@ EOF
 fi
 grep -q '# Initial configuration by baruwa-vagrant' /etc/sysconfig/iptables 2>/dev/null || {
 	[ -d /etc/baruwa ] || mkdir /etc/baruwa
+	[ -d /etc/pki/BaruwaCA/certs ] || mkdir -p /etc/pki/BaruwaCA/certs
 	case "$1" in
 	"backend")
 		cat /vagrant/scripts/files/backend >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="backend"
+EOF
 		;;
 	"cache")
 		cat /vagrant/scripts/files/cache >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="cache"
+EOF
 		;;
 	"indexer")
 		cat /vagrant/scripts/files/indexer >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="indexer"
+EOF
 		;;
 	"mail")
 		cat /vagrant/scripts/files/mail >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="mail"
+EOF
 		;;
 	"mq")
 		cat /vagrant/scripts/files/mq >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="mq"
+EOF
 		;;
 	"node")
 		cat /vagrant/scripts/files/node >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="node"
+EOF
 		;;
 	"web")
 		cat /vagrant/scripts/files/web >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="web"
+EOF
 		;;
 	"db")
 		cat /vagrant/scripts/files/db >/etc/sysconfig/iptables
 		touch /etc/baruwa/acme.disable
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="database"
+EOF
 		;;
 	*)
 		cat /vagrant/scripts/files/standalone >/etc/sysconfig/iptables
+		cat << 'EOF' > /etc/baruwa-profile
+SYSTEM_PROFILE="full"
+EOF
 		;;
 	esac
 	service iptables restart
