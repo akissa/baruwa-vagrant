@@ -99,7 +99,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell' do |s2|
     s2.path = 'scripts/bootstrap.sh'
-    s2.args = [ENV['BARUWA_PROFILE'], ENV['BARUWA_HOSTNAME']], ENV['BARUWA_ACTIVATION_KEY']]
+    s2.args = [ENV['BARUWA_PROFILE'], ENV['BARUWA_HOSTNAME'], ENV['BARUWA_ACTIVATION_KEY']]
   end
 
   config.vm.provision 'shell' do |s|
