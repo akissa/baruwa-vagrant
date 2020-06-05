@@ -94,6 +94,11 @@ EOF
 			echo "$2" >/etc/hostname
 		fi
 	fi
+	if [ "$3" != "" ]; then
+		echo "ACTIVATION_KEY=${3}" >> /etc/baruwa-profile
+	fi
+	chown root.root /etc/baruwa-profile
+	chmod 0600 /etc/baruwa-profile
 }
 if grep -Exq '^HOSTNAME=vultr.guest|HOSTNAME=digitalocean|HOSTNAME=localhost.localdomain$' /etc/sysconfig/network; then
 	sed -ie "s/^HOSTNAME=.*$/HOSTNAME=$(hostname)/" /etc/sysconfig/network
