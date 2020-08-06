@@ -108,10 +108,13 @@ def main():
         if profile in ['mail']:
             pkgs_to_install.append('baruwa-common')
             pkgs_to_install.append('spamassassin')
+            pkgs_to_install.append('baruwascanner')
         if profile in ['node']:
             pkgs_to_install.append('spamassassin')
+            pkgs_to_install.append('baruwascanner')
         if profile in ['standalone']:
             pkgs_to_install.append('spamassassin')
+            pkgs_to_install.append('baruwascanner')
         cmd = "rhnreg_ks --serverUrl=%s --activationkey=%s" % \
             (BARUWA_NET_URL, activation_key)
         for pkg in pkgs_to_download:
